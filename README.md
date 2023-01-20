@@ -18,14 +18,13 @@ The adaptive version of attractor algorithm.
 
 The attractor algorithm was first proposed for identifying co-expression signatures from bulk expression values in samples [[Ref.1](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1002920)]. A detailed description and application of the attractor algorithm on single-cell RNA-seq data can be found in [[Ref.2](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1009228#pcbi.1009228.ref020)].
 
-Users can refer to our manuscript [link] for a detailed description and application of adaptive attractor algorithm.
-[Parameters](README.md)
+Users can refer to our recent manuscript [Ref.3] for a detailed description and application of adaptive attractor algorithm.
 
 ## Tutorials
 ### Quick start
 ```R
 source("./findAttractor.adaptive.r")
-data <- data  # a normalized expression matrix with genes in the rows, cells in the columns.
+data <- as.matrix(data)  # a normalized expression matrix with genes in the rows, cells in the columns.
 seed <- "LUM"
 attr <- findAttractor.adaptive(data, seed)
 ```
@@ -53,7 +52,7 @@ data <- data_all[, metadata[which(metadata$SampleName == sampleID), ]$CellID]
   
 ## apply adaptive attractor algorithm
 source("./findAttractor.adaptive.r")
-data <- data  #normalized matrix for each sample
+data <- as.matrix(data)  #normalized matrix for each sample
 seed <- "LUM"
 attr <- findAttractor.adaptive(data, seed, exponent.max = 5, exponent.min = 2, step.large = 1, step.small = 0.1, dominantThreshold = 0.2, seedTopN = 50, compareNth = 10, verbose = FALSE)
 
@@ -90,10 +89,12 @@ Users can choose some general markers as seed genes, such as:
 | DCN         |          |            |             |         |   
 
 
-If the dataset has many cells of one cell type (eg. fibroblasts) and the attractor exponent (a) is fixed, then identical attractors will be found using different general markers for one cell type, such as DCN, LUM, and COL1A1. 
+If the dataset has many cells of one cell type (e.g. fibroblasts) and the attractor exponent (`a`) is fixed, then identical attractors will be found using different general markers for one cell type, such as DCN, LUM, and COL1A1. 
 
 ## Description of original attractor algorithm
-The exponent (a) is fixed. For the analysis of UMI based (e.g. 10x) and full-length-based (e.g. Smart-seq2) datasets, we would suggest to use a = 3 and a = 5, respectively.
+Detailed descriptions can be found in [Ref.1](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1002920). 
+
+The exponent (`a`) is fixed. For the analysis of UMI based (e.g. 10x) and full-length-based (e.g. Smart-seq2) datasets, we would suggest to use `a = 3` and `a = 5`, respectively.
 
 ```R
 ## install cafr package 
