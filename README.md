@@ -94,6 +94,7 @@ If the dataset has many cells of one cell type (e.g. fibroblasts) and the attrac
 
 ### Demonstration
 ![](https://github.com/LingyiC/adaptiveAttractor/blob/main/others/LUM_a3.gif)
+![](https://github.com/LingyiC/adaptiveAttractor/blob/main/others/DCN_a3.gif)
 
 ## Description of original attractor algorithm
 Detailed descriptions can be found in [Ref.1](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1002920). 
