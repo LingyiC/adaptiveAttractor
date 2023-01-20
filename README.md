@@ -1,5 +1,5 @@
 # Adaptive Attractor
-An adaptive method for finding co-expression signatures in single-cell/bulk RNA-seq dataset. 
+An adaptive method for finding co-expression signatures in single-cell/bulk RNA-seq datasets. 
 
 - [Overview](#Overview)
 - [Tutorials](#Tutorials)
@@ -12,17 +12,16 @@ An adaptive method for finding co-expression signatures in single-cell/bulk RNA-
 
 
 ## Overview
-The adaptive version of attractor algorithm. 
+An adaptive version of attractor algorithm. 
 
 `cafr::findAttractor` finds a converged attractor based on the seed gene provided. The `findAttractor.adaptive` gradually decreased the exponent parameter to maximize the strength of the Nth-ranked genes in the converged attractor.
 
 
-The attractor algorithm was first proposed for identifying co-expression signatures from bulk expression values in samples [[Ref.1](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1002920)]. A detailed description and application of the attractor algorithm on single-cell RNA-seq data can be found in [[Ref.2](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1009228#pcbi.1009228.ref020)].
-
-Users can refer to our recent manuscript [Ref.3] for a detailed description and application of adaptive attractor algorithm.
+The attractor algorithm was first proposed for identifying co-expression signatures from bulk expression values in samples [[Ref.1](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1002920)]. A detailed description and application of the attractor algorithm on single-cell RNA-seq data can be found in [[Ref.2](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1009228#pcbi.1009228.ref020)]. Users can refer to our recent manuscript [Ref.3] for a detailed description and application of adaptive attractor algorithm.
 
 ## Tutorials
 ### Quick start
+Please see [Seed selection](#Seed-selection) for more information about the seed. <br /> 
 ```R
 source("./findAttractor.adaptive.r")
 data <- as.matrix(data)  # a normalized expression matrix with genes in the rows, cells in the columns.
@@ -90,16 +89,17 @@ Users can choose some general markers as seed genes, such as:
 | DCN         |          |            |             |         |   
 
 
-If the dataset has many cells of one cell type (e.g. fibroblasts) and the attractor exponent (`a`) is fixed, then identical attractors will be found using different general markers for one cell type, such as DCN, LUM, and COL1A1. 
+If the dataset has many cells of one cell type (e.g. fibroblasts) and the attractor exponent (`a`) is fixed, then identical attractors will be found using different general markers for one cell type, like DCN, LUM, and COL1A1. 
 
 ### Demonstration
+Here, we applied the attractor finding algorithm using the `findAttractor` function implemented in the cafr (v0.312) R package [[Ref.1](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1002920)] with the general fibroblastic marker gene LUM and DCN as seed.<br />
 ![](https://github.com/LingyiC/adaptiveAttractor/blob/main/others/LUM_a3.gif)
 ![](https://github.com/LingyiC/adaptiveAttractor/blob/main/others/DCN_a3.gif)
 
 ## Description of original attractor algorithm
 Detailed descriptions can be found in [Ref.1](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1002920). 
 
-The exponent (`a`) is fixed. For the analysis of UMI based (e.g. 10x) and full-length-based (e.g. Smart-seq2) datasets, we would suggest to use `a = 3` and `a = 5`, respectively.
+The exponent (`a`) is fixed. For the analysis of UMI based (e.g. 10x) and full-length-based (e.g. Smart-seq2) datasets, we would suggest using `a = 3` and `a = 5`, respectively.
 
 ```R
 ## install cafr package 
