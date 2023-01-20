@@ -7,6 +7,7 @@ An adaptive method for finding co-expression signatures in single-cell/bulk RNA-
   - [Examples](#Examples)
   - [Parameters](#Parameters)
 - [Seed selection](#Seed-selection)
+  - [Demonstration](#Demonstration)
 - [Description of original attractor algorithm (fixed exponent parameter)](#Description-of-original-attractor-algorithm)
 
 
@@ -90,6 +91,9 @@ Users can choose some general markers as seed genes, such as:
 
 
 If the dataset has many cells of one cell type (e.g. fibroblasts) and the attractor exponent (`a`) is fixed, then identical attractors will be found using different general markers for one cell type, such as DCN, LUM, and COL1A1. 
+
+### Demonstration
+![](https://github.com/LingyiC/adaptiveAttractor/blob/main/others/LUM_a3.gif)
 
 ## Description of original attractor algorithm
 Detailed descriptions can be found in [Ref.1](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1002920). 
