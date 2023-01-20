@@ -93,7 +93,7 @@ Users can choose some general markers as seed genes, such as:
 If the dataset has many cells of one cell type (e.g. fibroblasts) and the attractor exponent (`a`) is fixed, then identical attractors will be found using different general markers for one cell type, such as DCN, LUM, and COL1A1. 
 
 ### Demonstration
-![](https://github.com/LingyiC/adaptiveAttractor/blob/main/others/LUM_a3.gif)
+
 ![](https://github.com/LingyiC/adaptiveAttractor/blob/main/others/DCN_a3.gif)
 
 ## Description of original attractor algorithm
