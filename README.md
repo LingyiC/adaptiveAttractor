@@ -1,14 +1,13 @@
 # Adaptive Attractor
-Finding co-expression signature in single-cell/bulk RNA-seq dataset based on the seed gene provided in an adaptive manner. 
-
+An adaptive method for finding co-expression signatures in single-cell/bulk RNA-seq dataset. 
 
 - [Overview](#Overview)
 - [Tutorials](#Tutorials)
   - [Quick start](#Quickstart)
-  - [Example](#Example)
-  - [Seed selection](#Seed)
+  - [Examples](#Examples)
   - [Parameters](#Parameters)
-- [Description of original attractor algorithm](#Introduction)
+- [Seed selection](#Seed-selection)
+- [Description of original attractor algorithm (fixed exponent parameter)](#Description-of-original-attractor-algorithm)
 
 
 ## Overview
@@ -31,7 +30,7 @@ seed <- "LUM"
 attr <- findAttractor.adaptive(data, seed)
 ```
 
-### Example 
+### Examples
 R script for generating Supplementary Table 1 in our recent manuscript [link]. 
 ```R
 ## install cafr package 
@@ -64,21 +63,10 @@ attr$final.exponent
 
 ```
 
-## Selection of seed gene
 
-Users can choose some general markers as seed genes, such as:
-
-| Fibroblast  | Pericyte | macrophage | Endothelial | mitotic |
-| ----------- | -------- |----------- | ----------- | ------- |
-| LUM         | RGS5     | AIF1       | PECAM1      | TOP2A   |
-| DCN         |          |            |             |         |   
-
-
-If the dataset has many cells of one cell type (eg. fibroblasts) and the attractor exponent (a) is fixed, then identical attractors will be found using different general markers for one cell type, such as DCN, LUM, and COL1A1. 
-
-## Parameters
+### Parameters
 `data` An expression matrix with genes in the rows, samples in the columns. <br />
-`seed` Seed gene. <br />
+`seed` Seed gene. Please see [Seed selection](#Seed-selection) for more information. <br />
 `exponent.max` The maximum exponent of the mutual information, used to create weight vector for metagenes. <br />
 `exponent.min` The minimum exponent of the mutual information, used to create weight vector for metagenes. <br />
 `step.large` Decreasing step of the first round of scanning. <br />
@@ -92,9 +80,20 @@ If the dataset has many cells of one cell type (eg. fibroblasts) and the attract
 `first.idx` Default first.idx = 1, the first gene of the metagene in each iteration.  <br />
 `second.idx` Default second.idx = 2, the second gene of the metagene in each iteration.  <br />
 
+## Seed selection
 
-## findAttractor
-Exponent is fixed. For the analysis of UMI based (e.g. 10x) and full-length-based (e.g. Smart-seq2) datasets, we would suggest to use a = 3 and a = 5, respectively.
+Users can choose some general markers as seed genes, such as:
+
+| Fibroblast  | Pericyte | macrophage | Endothelial | mitotic |
+| ----------- | -------- |----------- | ----------- | ------- |
+| LUM         | RGS5     | AIF1       | PECAM1      | TOP2A   |
+| DCN         |          |            |             |         |   
+
+
+If the dataset has many cells of one cell type (eg. fibroblasts) and the attractor exponent (a) is fixed, then identical attractors will be found using different general markers for one cell type, such as DCN, LUM, and COL1A1. 
+
+## Description of original attractor algorithm
+The exponent (a) is fixed. For the analysis of UMI based (e.g. 10x) and full-length-based (e.g. Smart-seq2) datasets, we would suggest to use a = 3 and a = 5, respectively.
 
 ```R
 ## install cafr package 
