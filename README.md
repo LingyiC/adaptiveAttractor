@@ -1,11 +1,38 @@
 # Adaptive Attractor
+Finding co-expression signature in single-cell/bulk RNA-seq dataset based on the seed gene provided in an adaptive manner. 
+
+
+- [Overview](#Overview)
+- [Tutorials](#Tutorials)
+  - [Quick start](#Quickstart)
+  - [Example](#Example)
+  - [Seed selection](#Seed)
+  - [Parameters](#Parameters)
+- [Description of original attractor algorithm](#Introduction)
+
+
+## Overview
 The adaptive version of attractor algorithm. 
 
-The adaptive attractor algorithm gradually decreased the exponent parameter to maximize the strength of the Nth-ranked genes in the converged attractor.
+`cafr::findAttractor` finds a converged attractor based on the seed gene provided. The `findAttractor.adaptive` gradually decreased the exponent parameter to maximize the strength of the Nth-ranked genes in the converged attractor.
 
-Users can refer to our manuscript [link] for a detailed description and application.
 
-## Example
+The attractor algorithm was first proposed for identifying co-expression signatures from bulk expression values in samples [[Ref.1](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1002920)]. A detailed description and application of the attractor algorithm on single-cell RNA-seq data can be found in [[Ref.2](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1009228#pcbi.1009228.ref020)].
+
+Users can refer to our manuscript [link] for a detailed description and application of adaptive attractor algorithm.
+[Parameters](README.md)
+
+## Tutorials
+### Quick start
+```R
+source("./findAttractor.adaptive.r")
+data <- data  # a normalized expression matrix with genes in the rows, cells in the columns.
+seed <- "LUM"
+attr <- findAttractor.adaptive(data, seed)
+```
+
+### Example 
+R script for generating Supplementary Table 1 in our recent manuscript [link]. 
 ```R
 ## install cafr package 
 devtools::install_github("weiyi-bitw/cafr")
@@ -37,6 +64,18 @@ attr$final.exponent
 
 ```
 
+## Selection of seed gene
+
+Users can choose some general markers as seed genes, such as:
+
+| Fibroblast  | Pericyte | macrophage | Endothelial | mitotic |
+| ----------- | -------- |----------- | ----------- | ------- |
+| LUM         | RGS5     | AIF1       | PECAM1      | TOP2A   |
+| DCN         |          |            |             |         |   
+
+
+If the dataset has many cells of one cell type (eg. fibroblasts) and the attractor exponent (a) is fixed, then identical attractors will be found using different general markers for one cell type, such as DCN, LUM, and COL1A1. 
+
 ## Parameters
 `data` An expression matrix with genes in the rows, samples in the columns. <br />
 `seed` Seed gene. <br />
@@ -54,4 +93,12 @@ attr$final.exponent
 `second.idx` Default second.idx = 2, the second gene of the metagene in each iteration.  <br />
 
 
+## findAttractor
+Exponent is fixed. For the analysis of UMI based (e.g. 10x) and full-length-based (e.g. Smart-seq2) datasets, we would suggest to use a = 3 and a = 5, respectively.
+
+```R
+## install cafr package 
+devtools::install_github("weiyi-bitw/cafr")
+cafr::findAttractor(data, vec, a = 3, epsilon = 1e-7)
+```
 
