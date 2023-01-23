@@ -83,7 +83,7 @@ attr$final.exponent
 
 Users can choose some general markers as seed genes, such as:
 
-| Fibroblast  | Pericyte | macrophage | Endothelial | mitotic |
+| Fibroblast  | Pericyte | Macrophage | Endothelial | Mitotic |
 | ----------- | -------- |----------- | ----------- | ------- |
 | LUM         | RGS5     | AIF1       | PECAM1      | TOP2A   |
 | DCN         |          |            |             |         |   
