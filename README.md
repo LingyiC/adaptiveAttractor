@@ -1,3 +1,5 @@
+The repository contains the code for the computational studies in [The fibro-adipogenic progenitor APOD+DCN+LUM+ cell population in aggressive carcinomas](https://doi.org/10.1007/s10555-024-10181-y).
+
 # Adaptive Attractor
 An adaptive method for finding co-expression signatures in single-cell/bulk RNA-seq datasets. 
 
@@ -17,7 +19,7 @@ An adaptive version of attractor algorithm.
 `cafr::findAttractor` finds a converged attractor based on the seed gene provided. The `findAttractor.adaptive` gradually decreased the exponent parameter to maximize the strength of the Nth-ranked genes in the converged attractor.
 
 
-The attractor algorithm was first proposed for identifying co-expression signatures from bulk expression values in samples [[Ref.1](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1002920)]. A detailed description and application of the attractor algorithm on single-cell RNA-seq data can be found in [[Ref.2](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1009228#pcbi.1009228.ref020)]. Users can refer to our recent manuscript [Ref.3] for a detailed description and application of adaptive attractor algorithm.
+The attractor algorithm was first proposed for identifying co-expression signatures from bulk expression values in samples [[Ref.1](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1002920)]. A detailed description and application of the attractor algorithm on single-cell RNA-seq data can be found in [[Ref.2](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1009228#pcbi.1009228.ref020)]. Users can refer to our recent manuscript [[Ref.3](https://doi.org/10.1093/bioinformatics/btae283)] for a detailed description and application of adaptive attractor algorithm.
 
 ## Tutorials
 ### Quick start
